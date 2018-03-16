@@ -8,7 +8,6 @@ from .base import (
     BaseListFactory,
     ListFactory,
     StubFactory,
-
     use_strategy,
 )
 
@@ -18,10 +17,8 @@ from .enums import (
     STUB_STRATEGY,
 )
 
-
 from .errors import (
-    FactoryError,
-)
+    FactoryError, )
 
 from .faker import Faker
 
@@ -45,20 +42,17 @@ from .declarations import (
 
 from .helpers import (
     debug,
-
     build,
     create,
     stub,
     generate,
     simple_generate,
     make_factory,
-
     build_batch,
     create_batch,
     stub_batch,
     generate_batch,
     simple_generate_batch,
-
     lazy_attribute,
     iterator,
     sequence,
@@ -72,11 +66,11 @@ from . import alchemy
 from . import django
 from . import mogo
 from . import mongoengine
-
+from . import pony
 
 __version__ = '2.10.1.dev0'
 __author__ = 'Raphaël Barrois <raphael.barrois+fboy@polytechnique.org>'
 
-
 MogoFactory = mogo.MogoFactory
 DjangoModelFactory = django.DjangoModelFactory
+PonyFactory = pony.PonyFactory
