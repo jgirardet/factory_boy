@@ -15,16 +15,8 @@ except ImportError as e:  # pragma: no cover
 class PonyFactory(base.Factory):
     """Factory for pony orm objects."""
 
-    def __new__(cls, *args, **kwargs):
-        cls.hello = "hello"
-        return super().__new__(cls, *args, **kwargs)
-
     class Meta:
         abstract = True
-
-    # @classmethod
-    # def _build(cls, model_class, *args, **kwargs):
-    #     return model_class(*args, **kwargs)
 
     @classmethod
     @db_session
