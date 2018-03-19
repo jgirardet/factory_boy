@@ -66,11 +66,11 @@ from . import alchemy
 from . import django
 from . import mogo
 from . import mongoengine
-from . import pony
+from . import ponyorm
 
 __version__ = '2.10.1.dev0'
 __author__ = 'Raphaël Barrois <raphael.barrois+fboy@polytechnique.org>'
 
 MogoFactory = mogo.MogoFactory
 DjangoModelFactory = django.DjangoModelFactory
-PonyFactory = pony.PonyFactory
+PonyFactory = ponyorm.PonyFactory

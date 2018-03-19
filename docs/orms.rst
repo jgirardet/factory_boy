@@ -490,3 +490,56 @@ Here is an example layout:
             self.session.rollback()
             # Remove it, so that the next test gets a new Session()
             common.Session.remove()
+
+Pony ORM
+----------
+
+.. currentmodule:: factory.ponyorm
+
+
+Factoy_boy also supports `PonyORM`_  models through the :class:`PonyFactory` class.
+
+
+.. _PonyORM: https://ponyorm.com/
+.. class:: PonyFactory(factory.Factory)
+
+    Dedicated class for `PonyORM`_ entities.
+
+    This class provides the following features:
+
+    * :func:`~factory.Factory.create()` decorated by pony.orm.db_session 
+
+        .. code-block:: python
+
+            class User(db.Entity):
+                username = Required()
+                name = Optional()
+
+
+            class UserFactory(factory.PonyFactory):
+                class Meta:
+                    model = User  # or ``db.User``
+
+                username = 'john'
+                name= 'john do'
+
+    Only field in the Factory are created. If you don't specify a field in factory for a Required one, it will fail.
+
+        .. code-block:: pycon
+
+            >>> User.objects.all()
+            []
+            >>> UserFactory()                   # Creates a new user
+            <User: john>
+            >>> User.objects.all()
+            [<User: john>]
+
+            >>> UserFactory()                   # Fetches the existing user
+            <User: john>
+            >>> User.objects.all()              # No new user!
+            [<User: john>]
+
+            >>> UserFactory(username='jack')    # Creates another user
+            <User: jack>
+            >>> User.objects.all()
+            [<User: john>, <User: jack>]
